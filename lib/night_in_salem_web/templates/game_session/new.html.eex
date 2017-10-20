@@ -1,0 +1,5 @@
+<%= form_for @conn, game_session_path(@conn, :create), [as: :game_session], fn f -> %>
+  <%= render "_form.html", form: f %>
+  <%= submit "New Game" %>
+<% end %>
+

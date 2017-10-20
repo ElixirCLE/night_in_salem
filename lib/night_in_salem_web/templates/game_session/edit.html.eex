@@ -1,0 +1,5 @@
+<%= form_for @conn, game_session_path(@conn, :update, 1), [as: :game_session, method: :patch], fn f -> %>
+  <%= render "_form.html", form: f %>
+  <%= submit "Join Game" %>
+<% end %>
+

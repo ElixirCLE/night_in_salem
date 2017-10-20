@@ -1,0 +1,1 @@
+<%= text_input @form, :player_name, placeholder: "Player Name" %>
