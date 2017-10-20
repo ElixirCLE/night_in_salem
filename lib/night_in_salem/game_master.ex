@@ -1,6 +1,8 @@
 defmodule NightInSalem.GameMaster do
   use GenServer
 
+  alias NightInSalem.Player
+
   @initial_state []
 
   ## Client Functions
@@ -116,11 +118,6 @@ defmodule NightInSalem.GameMaster do
   end
 
   defp new_player(name) do
-    %{name: name,
-      witch: false,
-      constable: false,
-      dead: false,
-    }
+    %Player{name: name}
   end
-
 end
