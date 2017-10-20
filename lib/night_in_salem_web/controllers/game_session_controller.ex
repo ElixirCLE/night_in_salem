@@ -10,8 +10,9 @@ defmodule NightInSalemWeb.GameSessionController do
   end
 
   def create(conn, %{ "game_session" => %{ "player_name" => player_name } }) do
-    conn = put_session(conn, :player_name, player_name)
-    redirect(conn, to: game_session_path(conn, :show, 1))
+    conn
+      |> put_session(:player_name, player_name)
+      |> redirect(to: game_session_path(conn, :show, 1))
   end
 
   def show(conn, %{ "id" => id }) do
@@ -23,7 +24,8 @@ defmodule NightInSalemWeb.GameSessionController do
   end
 
   def update(conn, %{ "game_session" => %{ "player_name" => player_name } }) do
-    conn = put_session(conn, :player_name, player_name)
-    redirect(conn, to: game_session_path(conn, :show, 1))
+    conn
+      |> put_session(:player_name, player_name)
+      |> redirect(to: game_session_path(conn, :show, 1))
   end
 end
