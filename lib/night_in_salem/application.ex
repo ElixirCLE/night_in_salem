@@ -10,6 +10,7 @@ defmodule NightInSalem.Application do
     children = [
       # Start the endpoint when the application starts
       supervisor(NightInSalemWeb.Endpoint, []),
+      worker(NightInSalem.GameMaster, []),
       # Start your own worker by calling: NightInSalem.Worker.start_link(arg1, arg2, arg3)
       # worker(NightInSalem.Worker, [arg1, arg2, arg3]),
     ]
