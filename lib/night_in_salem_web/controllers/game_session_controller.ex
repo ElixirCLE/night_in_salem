@@ -16,7 +16,8 @@ defmodule NightInSalemWeb.GameSessionController do
   end
 
   def show(conn, %{ "id" => id }) do
-    render conn, "show.html", player_name: get_session(conn, :player_name)
+    player_name = get_session(conn, :player_name)
+    render conn, "show.html", player_name: player_name, user_token: Phoenix.Token.sign(conn, "player name", player_name)
   end
 
   def edit(conn, _params) do

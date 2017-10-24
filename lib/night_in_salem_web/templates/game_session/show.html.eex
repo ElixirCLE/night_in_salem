@@ -1,1 +1,4 @@
 Hi <%= @player_name %>
+
+
+<div id="users"></div>
