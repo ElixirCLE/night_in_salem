@@ -16,9 +16,7 @@ defmodule NightInSalemWeb.Router do
   scope "/", NightInSalemWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-
-    resources "/game_session", GameSessionController
+    resources "/", GameSessionController
   end
 
   # Other scopes may use custom stacks.
