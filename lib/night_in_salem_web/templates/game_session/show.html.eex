@@ -1,1 +1,5 @@
 Hi <%= @player_name %>
+<br>
+This session is <%= @game_id %>
+<br>
+Players: <%= length(@players) %>
