@@ -3,7 +3,6 @@ import {Socket, Presence} from "phoenix"
 import $ from "jquery"
 
 if (window.userToken) {
-
   let show_points = false;
   let socket = new Socket("/socket", {params: {token: window.userToken}})
 

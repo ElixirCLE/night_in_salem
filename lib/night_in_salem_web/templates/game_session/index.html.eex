@@ -1,3 +1,4 @@
-<%#= link("New Session", to: game_session_path(@conn, :new)) %>
+<%= link("New Session", to: game_session_path(@conn, :new)) %>
 <br>
-<%= link("Join Session", to: game_session_path(@conn, :edit, 1)) %>
+<%#= link("Join Session", to: game_session_path(@conn, :edit, 1)) %>
+<%#= link("Join Session", to: "/game_session/1/edit") %>
