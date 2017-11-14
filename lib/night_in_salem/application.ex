@@ -12,6 +12,7 @@ defmodule NightInSalem.Application do
       supervisor(NightInSalemWeb.Endpoint, []),
       supervisor(Registry, [:unique, GameMasterRegistry]),
       supervisor(NightInSalem.GameMasterSupervisor, []),
+      supervisor(NightInSalemWeb.GameSessionPresence, []),
       # Start your own worker by calling: NightInSalem.Worker.start_link(arg1, arg2, arg3)
       # worker(NightInSalem.Worker, [arg1, arg2, arg3]),
     ]
