@@ -1,4 +1,4 @@
-Hi <%= @player_name %>
+You are: <%= @player_name %>
 
-
+<h2>Players:</h2>
 <div id="users"></div>
