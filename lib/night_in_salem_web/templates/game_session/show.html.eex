@@ -1,7 +1,11 @@
 <h2>Hi <%= @player_name %></h2>
 
 <p>
-  This session is <%= @game_id %>
+  This session is <%= @game_key %>, use the 📋 button below to copy the address of this game to your clipboard so you can send it to your friends
 </p>
+<p class="game-link-container">
+  <input class="copy-link game-link" id="game-link" type="text" readonly value="<%=game_session_url(@conn, :show, @game_key)%>"><span class="copy-link clipboard" data-target="game-link">📋</span>
+</p>
+
 <h2>Players:</h2>
 <div id="users"></div>

@@ -1,0 +1,5 @@
+<%= form_for @conn, game_player_path(@conn, :create), [as: :game_session, method: :post], fn f -> %>
+  <%= text_input f, :game_key, placeholder: "Game Key" %>
+  <%= text_input f, :player_name, placeholder: "Player Name" %>
+  <%= submit "Join Game" %>
+<% end %>
