@@ -12,36 +12,37 @@ defmodule NightInSalemWeb.GameSessionController do
   end
 
   def create(conn, %{ "game_session" => %{ "player_name" => player_name } }) do
-    game_id = GameMasterSupervisor.start_game
-    GameMaster.add_player(game_id, player_name)
+    game_key = GameMasterSupervisor.start_game
+    GameMaster.add_player(game_key, player_name)
     conn
       |> put_session(:player_name, player_name)
-      |> redirect(to: game_session_path(conn, :show, game_id))
+      |> put_session(:game_key, game_key)
+      |> redirect(to: game_session_path(conn, :show, game_key))
   end
 
-  def show(conn, %{ "id" => game_id }) do
+  def show(conn, %{ "id" => game_key }) do
     player_name = get_session(conn, :player_name)
-    show_for_player(conn, game_id, player_name)
+    show_for_player(conn, game_key, player_name)
   end
 
-  defp show_for_player(conn, game_id, nil) do
+  defp show_for_player(conn, game_key, nil) do
     conn
-      |> redirect(to: game_session_path(conn, :edit, game_id))
+      |> redirect(to: game_session_path(conn, :edit, game_key))
   end
 
-  defp show_for_player(conn, game_id, player_name) do
-    render conn, "show.html", player_name: player_name, game_id: game_id, user_token: Phoenix.Token.sign(conn, "player name", player_name)
+  defp show_for_player(conn, game_key, player_name) do
+    render conn, "show.html", player_name: player_name, game_key: game_key, user_token: Phoenix.Token.sign(conn, "player name", player_name)
   end
 
-  def edit(conn, %{ "id" => game_id }) do
-    render conn, "edit.html", game_id: game_id
+  def edit(conn, %{ "id" => game_key }) do
+    render conn, "edit.html", game_key: game_key
   end
 
-  def update(conn, %{ "game_session" => %{ "player_name" => player_name }, "id" => game_id }) do
-    GameMaster.add_player(game_id, player_name)
+  def update(conn, %{ "game_session" => %{ "player_name" => player_name }, "id" => game_key }) do
+    GameMaster.add_player(game_key, player_name)
     conn
       |> put_session(:player_name, player_name)
-      |> put_session(:game_id, game_id)
-      |> redirect(to: game_session_path(conn, :show, game_id))
+      |> put_session(:game_key, game_key)
+      |> redirect(to: game_session_path(conn, :show, game_key))
   end
 end

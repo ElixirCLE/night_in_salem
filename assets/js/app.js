@@ -8,7 +8,7 @@ if (window.userToken) {
 
   socket.connect()
 
-  let party = socket.channel("game_session:1", {})
+  let party = socket.channel("game_session:" + window.gameKey, {})
   let presences = {}
 
   let listBy = (player, {metas: metas}) => {
@@ -29,5 +29,11 @@ if (window.userToken) {
     render(presences)
   })
   party.join()
-
 }
+
+$(function(){
+  $(".clipboard").click(function(event){
+    document.getElementById(event.target.dataset.target).select();
+    document.execCommand("Copy");
+  })
+})

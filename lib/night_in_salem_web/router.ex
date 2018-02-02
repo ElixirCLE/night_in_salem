@@ -16,6 +16,7 @@ defmodule NightInSalemWeb.Router do
   scope "/", NightInSalemWeb do
     pipe_through :browser # Use the default browser stack
 
+    resources "/player", GamePlayerController, only: [:new, :create]
     resources "/", GameSessionController
   end
 
