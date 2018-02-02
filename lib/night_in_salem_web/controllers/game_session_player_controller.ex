@@ -1,4 +1,4 @@
-defmodule NightInSalemWeb.GamePlayerController do
+defmodule NightInSalemWeb.GameSessionPlayerController do
   use NightInSalemWeb, :controller
   alias NightInSalem.GameMasterSupervisor
   alias NightInSalem.GameMaster
